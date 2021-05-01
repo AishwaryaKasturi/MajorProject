@@ -76,6 +76,9 @@ function isValidEmailAddress(emailAddress) {
 	color:red;
 }
 </style>
+
+<div style="margin-left:100px">
+
 <?= form_open('',['id'=>'register_form']) ?>
 	<h3 id="tag">Personal Information</h3>
 	<p id="alert">* Feilds are Mandantory</p>
@@ -193,10 +196,11 @@ function isValidEmailAddress(emailAddress) {
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<input type="text" id="current" value="<?= $student->job?>" name="current" class="form-control current" placeholder=""><br>
+			<input type="text" size=200 id="current" value="<?= $student->job?>" name="current" class="form-control current" placeholder=""><br>
 			<div class="invalid-feedback current"></div>
 		</div>
 	</div>
 	<input type="hidden" name="verify" value="<?= $student->verify?>">
 	<br><input type="button" value="Submit" id="register" class="btn btn-primary">
 <?= form_close() ?>
+</div>

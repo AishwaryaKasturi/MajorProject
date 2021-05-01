@@ -30,6 +30,12 @@
 		<li class="nav-item">
 			 <a class="nav-link mt-1 ml-4 <?php if($this->uri->segment(2)=="profile"){echo "active";}?>" href="<?= base_url('student/profile')?>"><span class="fa fa-user"></span>Profile</a>
 		</li>
+
+		<li class="nav-item">
+			 <a class="nav-link mt-1 ml-4 <?php if($this->uri->segment(2)=="gallery"){echo "active";}?>" href="<?= base_url('student/gallery')?>"><span class="fa fa-sms"></span>Gallery</a>
+		</li>
+
+
 		<li class="nav-item">
 			 <a class="nav-link mt-1 ml-4 <?php if($this->uri->segment(2)=="group"){echo "active";}?>" href="<?= base_url('student/group')?>"><span class="fa fa-sms"></span>Group Chat</a>
 		</li>

@@ -10,10 +10,11 @@
 <?php if($this->session->flashdata('unverify_user')) : ?>
     <?php echo '<p class="alert alert-success mt-3">' .$this->session->flashdata('unverify_user') . '</p>'; ?>
 <?php endif; ?>
-<a class="btn btn-primary mt-4">Add Student</a><hr>
+<!--<a class="btn btn-primary mt-4">Add Student</a><hr>-->
+<div style="margin-left:100px">
 <h1 class="display-4 mb-3">Recently Registerd Students</h1>
 <div class="table table-responsive">
-	<table width="95%" class="table-striped">
+	<table width="100%" class="table-striped">
 		<thead>
 			<th>Id</th>
 			<th>First Name</th>
@@ -47,4 +48,5 @@
 			<?php endforeach;?>
 		</tbody>
 	</table>
+</div>
 </div>
