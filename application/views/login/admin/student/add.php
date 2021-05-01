@@ -1,3 +1,4 @@
+
 <?= form_open('',['id'=>'register_form']) ?>
 	<h3 id="tag">Personal Information</h3>
 	<p id="alert">* Feilds are Mandantory</p>
