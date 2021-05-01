@@ -4,3 +4,6 @@ http://localhost/alumni/student/
 saved users and passwords:
 username:- admin@gmail.com
 password:- admin@1234
+
+shreyareddy.lakkadi99@gmail.com
+manjula98480
