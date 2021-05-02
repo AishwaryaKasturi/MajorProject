@@ -38,6 +38,7 @@
 		});
 	});
 </script>
+<div style="margin-left:100px;">
 <h1 class="display-4">Edit Event</h1><br>
 <h5 style="color:red;">* Feilds are mandatory</h5><br>
 <?= form_open('',['id'=>'event_form'])?>
@@ -176,3 +177,4 @@
 	</div>
 	<br><input type="button" class="btn btn-primary" value="submit" id="submit"><br><br>
 <?= form_close()?>
+</div>
