@@ -1,123 +1,337 @@
 <?php $this->load->view('navbar'); ?>
-<script type="text/javascript" src="<?= base_url('assets/js/jssor.slider-28.0.0.min.js') ?>"></script>
-		
 <style>
-        /*jssor slider loading skin spin css*/
-        .jssorl-009-spin img {
-            animation-name: jssorl-009-spin;
-            animation-duration: 1.6s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
+	/* .outerdiv{
+		text-align: center;
+	} */
+	.container1 {
+		position: relative;
+		width: 50%;
+		display: inline-block;
+		float: left;
+	}
 
-        @keyframes jssorl-009-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+	.image {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
 
-        /*jssor slider bullet skin 053 css*/
-        .jssorb053 .i {position:absolute;cursor:pointer;}
-        .jssorb053 .i .b {fill:#fff;fill-opacity:0.3;}
-        .jssorb053 .i:hover .b {fill-opacity:.7;}
-        .jssorb053 .iav .b {fill-opacity: 1;}
-        .jssorb053 .i.idn {opacity:.3;}
+	.overlay {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		right: 0;
+		background-color: #008CBA;
+		overflow: hidden;
+		width: 100%;
+		height: 0;
+		transition: .5s ease;
+	}
 
-        /*jssor slider arrow skin 093 css*/
-        .jssora093 {display:block;position:absolute;cursor:pointer;}
-        .jssora093 .c {fill:none;stroke:#fff;stroke-width:400;stroke-miterlimit:10;}
-        .jssora093 .a {fill:none;stroke:#fff;stroke-width:400;stroke-miterlimit:10;}
-        .jssora093:hover {opacity:.8;}
-        .jssora093.jssora093dn {opacity:.6;}
-        .jssora093.jssora093ds {opacity:.3;pointer-events:none;}
-    </style>
-		<script type="text/javascript">
-        window.jssor_1_slider_init = function() {
+	.container1:hover .overlay {
+		bottom: 0;
+		height: 100%;
+	}
 
-            var jssor_1_SlideshowTransitions = [
-              {$Duration:500,$Delay:12,$Cols:10,$Rows:5,$Opacity:2,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2049,$Easing:$Jease$.$OutQuad},
-              {$Duration:500,$Delay:40,$Cols:10,$Rows:5,$Opacity:2,$Clip:15,$SlideOut:true,$Easing:$Jease$.$OutQuad},
-              {$Duration:1000,x:-0.2,$Delay:20,$Cols:16,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5}},
-              {$Duration:1600,y:-1,$Delay:40,$Cols:24,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Easing:$Jease$.$OutJump,$Round:{$Top:1.5}},
-              {$Duration:1200,x:0.2,y:-0.1,$Delay:16,$Cols:10,$Rows:5,$Opacity:2,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InWave,$Top:$Jease$.$InWave,$Clip:$Jease$.$OutQuad},$Round:{$Left:1.3,$Top:2.5}},
-              {$Duration:1500,x:0.3,y:-0.3,$Delay:20,$Cols:10,$Rows:5,$Opacity:2,$Clip:15,$During:{$Left:[0.2,0.8],$Top:[0.2,0.8]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InJump,$Top:$Jease$.$InJump,$Clip:$Jease$.$OutQuad},$Round:{$Left:0.8,$Top:2.5}},
-              {$Duration:1500,x:0.3,y:-0.3,$Delay:20,$Cols:10,$Rows:5,$Opacity:2,$Clip:15,$During:{$Left:[0.1,0.9],$Top:[0.1,0.9]},$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InJump,$Top:$Jease$.$InJump,$Clip:$Jease$.$OutQuad},$Round:{$Left:0.8,$Top:2.5}}
-            ];
+	.text {
+		white-space: nowrap;
+		color: white;
+		font-size: 20px;
+		position: absolute;
+		overflow: hidden;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		width: 80%;
+		text-align: center;
+	}
+</style>
+<script type="text/javascript" src="<?= base_url('assets/js/jssor.slider-28.0.0.min.js') ?>"></script>
 
-            var jssor_1_options = {
-              $AutoPlay: 1,
-              $SlideshowOptions: {
-                $Class: $JssorSlideshowRunner$,
-                $Transitions: jssor_1_SlideshowTransitions,
-                $TransitionsOrder: 1
-              },
-              $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$
-              },
-              $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$,
-                $SpacingX: 16,
-                $SpacingY: 16
-              }
-            };
+<style>
+	/*jssor slider loading skin spin css*/
+	.jssorl-009-spin img {
+		animation-name: jssorl-009-spin;
+		animation-duration: 1.6s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
 
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-            /*#region responsive code begin*/
-
-            var MAX_WIDTH = 980;
-
-            function ScaleSlider() {
-                var containerElement = jssor_1_slider.$Elmt.parentNode;
-                var containerWidth = containerElement.clientWidth;
-
-                if (containerWidth) {
-
-                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                    jssor_1_slider.$ScaleWidth(expectedWidth);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-
-            ScaleSlider();
-
-            $Jssor$.$AddEvent(window, "load", ScaleSlider);
-            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-            /*#endregion responsive code end*/
-        };
-    </script>
-	<style>
-		
-		#news{
-			padding:30px;
+	@keyframes jssorl-009-spin {
+		from {
+			transform: rotate(0deg);
 		}
-		#news-bar>li{
-			list-style-type:none;
+
+		to {
+			transform: rotate(360deg);
 		}
-	</style>
+	}
+
+	/*jssor slider bullet skin 053 css*/
+	.jssorb053 .i {
+		position: absolute;
+		cursor: pointer;
+	}
+
+	.jssorb053 .i .b {
+		fill: #fff;
+		fill-opacity: 0.3;
+	}
+
+	.jssorb053 .i:hover .b {
+		fill-opacity: .7;
+	}
+
+	.jssorb053 .iav .b {
+		fill-opacity: 1;
+	}
+
+	.jssorb053 .i.idn {
+		opacity: .3;
+	}
+
+	/*jssor slider arrow skin 093 css*/
+	.jssora093 {
+		display: block;
+		position: absolute;
+		cursor: pointer;
+	}
+
+	.jssora093 .c {
+		fill: none;
+		stroke: #fff;
+		stroke-width: 400;
+		stroke-miterlimit: 10;
+	}
+
+	.jssora093 .a {
+		fill: none;
+		stroke: #fff;
+		stroke-width: 400;
+		stroke-miterlimit: 10;
+	}
+
+	.jssora093:hover {
+		opacity: .8;
+	}
+
+	.jssora093.jssora093dn {
+		opacity: .6;
+	}
+
+	.jssora093.jssora093ds {
+		opacity: .3;
+		pointer-events: none;
+	}
+</style>
+<script type="text/javascript">
+	window.jssor_1_slider_init = function() {
+
+		var jssor_1_SlideshowTransitions = [{
+				$Duration: 500,
+				$Delay: 12,
+				$Cols: 10,
+				$Rows: 5,
+				$Opacity: 2,
+				$Clip: 15,
+				$SlideOut: true,
+				$Formation: $JssorSlideshowFormations$.$FormationStraightStairs,
+				$Assembly: 2049,
+				$Easing: $Jease$.$OutQuad
+			},
+			{
+				$Duration: 500,
+				$Delay: 40,
+				$Cols: 10,
+				$Rows: 5,
+				$Opacity: 2,
+				$Clip: 15,
+				$SlideOut: true,
+				$Easing: $Jease$.$OutQuad
+			},
+			{
+				$Duration: 1000,
+				x: -0.2,
+				$Delay: 20,
+				$Cols: 16,
+				$SlideOut: true,
+				$Formation: $JssorSlideshowFormations$.$FormationStraight,
+				$Assembly: 260,
+				$Easing: {
+					$Left: $Jease$.$InOutExpo,
+					$Opacity: $Jease$.$InOutQuad
+				},
+				$Opacity: 2,
+				$Outside: true,
+				$Round: {
+					$Top: 0.5
+				}
+			},
+			{
+				$Duration: 1600,
+				y: -1,
+				$Delay: 40,
+				$Cols: 24,
+				$SlideOut: true,
+				$Formation: $JssorSlideshowFormations$.$FormationStraight,
+				$Easing: $Jease$.$OutJump,
+				$Round: {
+					$Top: 1.5
+				}
+			},
+			{
+				$Duration: 1200,
+				x: 0.2,
+				y: -0.1,
+				$Delay: 16,
+				$Cols: 10,
+				$Rows: 5,
+				$Opacity: 2,
+				$Clip: 15,
+				$During: {
+					$Left: [0.3, 0.7],
+					$Top: [0.3, 0.7]
+				},
+				$Formation: $JssorSlideshowFormations$.$FormationStraightStairs,
+				$Assembly: 260,
+				$Easing: {
+					$Left: $Jease$.$InWave,
+					$Top: $Jease$.$InWave,
+					$Clip: $Jease$.$OutQuad
+				},
+				$Round: {
+					$Left: 1.3,
+					$Top: 2.5
+				}
+			},
+			{
+				$Duration: 1500,
+				x: 0.3,
+				y: -0.3,
+				$Delay: 20,
+				$Cols: 10,
+				$Rows: 5,
+				$Opacity: 2,
+				$Clip: 15,
+				$During: {
+					$Left: [0.2, 0.8],
+					$Top: [0.2, 0.8]
+				},
+				$Formation: $JssorSlideshowFormations$.$FormationStraightStairs,
+				$Assembly: 260,
+				$Easing: {
+					$Left: $Jease$.$InJump,
+					$Top: $Jease$.$InJump,
+					$Clip: $Jease$.$OutQuad
+				},
+				$Round: {
+					$Left: 0.8,
+					$Top: 2.5
+				}
+			},
+			{
+				$Duration: 1500,
+				x: 0.3,
+				y: -0.3,
+				$Delay: 20,
+				$Cols: 10,
+				$Rows: 5,
+				$Opacity: 2,
+				$Clip: 15,
+				$During: {
+					$Left: [0.1, 0.9],
+					$Top: [0.1, 0.9]
+				},
+				$SlideOut: true,
+				$Formation: $JssorSlideshowFormations$.$FormationStraightStairs,
+				$Assembly: 260,
+				$Easing: {
+					$Left: $Jease$.$InJump,
+					$Top: $Jease$.$InJump,
+					$Clip: $Jease$.$OutQuad
+				},
+				$Round: {
+					$Left: 0.8,
+					$Top: 2.5
+				}
+			}
+		];
+
+		var jssor_1_options = {
+			$AutoPlay: 1,
+			$SlideshowOptions: {
+				$Class: $JssorSlideshowRunner$,
+				$Transitions: jssor_1_SlideshowTransitions,
+				$TransitionsOrder: 1
+			},
+			$ArrowNavigatorOptions: {
+				$Class: $JssorArrowNavigator$
+			},
+			$BulletNavigatorOptions: {
+				$Class: $JssorBulletNavigator$,
+				$SpacingX: 16,
+				$SpacingY: 16
+			}
+		};
+
+		var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+		/*#region responsive code begin*/
+
+		var MAX_WIDTH = 980;
+
+		function ScaleSlider() {
+			var containerElement = jssor_1_slider.$Elmt.parentNode;
+			var containerWidth = containerElement.clientWidth;
+
+			if (containerWidth) {
+
+				var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+				jssor_1_slider.$ScaleWidth(expectedWidth);
+			} else {
+				window.setTimeout(ScaleSlider, 30);
+			}
+		}
+
+		ScaleSlider();
+
+		$Jssor$.$AddEvent(window, "load", ScaleSlider);
+		$Jssor$.$AddEvent(window, "resize", ScaleSlider);
+		$Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+		/*#endregion responsive code end*/
+	};
+</script>
+<style>
+	#news {
+		padding: 30px;
+	}
+
+	#news-bar>li {
+		list-style-type: none;
+	}
+</style>
 <div id="jssor_1" style="margin-top:40px; position:relative;margin:20px auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden; border:7px solid white">
 	<!-- Loading Screen -->
 	<div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-		<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="<?= base_url('assets/img/spin.svg')?>" />
+		<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="<?= base_url('assets/img/spin.svg') ?>" />
 	</div>
 	<div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
 		<div>
-			<img data-u="image" src="<?= base_url('assets/img/kmit1.jpg')?>" />
+			<img data-u="image" src="<?= base_url('assets/img/kmit1.jpg') ?>" />
 		</div>
 		<div>
-			<img data-u="image" src="<?= base_url('assets/img/kmit2.jpg')?>" />
+			<img data-u="image" src="<?= base_url('assets/img/kmit2.jpg') ?>" />
 		</div>
 		<div>
-			<img data-u="image" src="<?= base_url('assets/img/slider3.jpg')?>" />
+			<img data-u="image" src="<?= base_url('assets/img/slider3.jpg') ?>" />
 		</div>
 		<div>
-			<img data-u="image" src="<?= base_url('assets/img/kmitdandiya.jpg')?>" />
+			<img data-u="image" src="<?= base_url('assets/img/kmitdandiya.jpg') ?>" />
 		</div>
 		<div>
-			<img data-u="image" src="<?= base_url('assets/img/slider3.jpg')?>" />
+			<img data-u="image" src="<?= base_url('assets/img/slider3.jpg') ?>" />
 		</div>
 	</div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">responsive slider</a>
 	<!-- Bullet Navigator -->
@@ -144,43 +358,81 @@
 		</svg>
 	</div>
 </div>
-<script type="text/javascript">jssor_1_slider_init();</script>
-<h1 id="news" class="display-4 wow bounceIn">News / Update</h1><hr>
-	<div class="row">
-		<?php foreach($news as $new) : ?>
-		<?php if($new->is_publish == 1) :?>
+<script type="text/javascript">
+	jssor_1_slider_init();
+</script>
+<h1 id="news" class="display-4 wow bounceIn">News / Update</h1>
+<hr>
+<div class="row">
+	<?php foreach ($news as $new) : ?>
+		<?php if ($new->is_publish == 1) : ?>
 			<div id="news-bar" class="col-sm-6">
 				<li>
-					<h4><?= $new->title?></h4>
-						<?= word_limiter($new->body,20)?>
+					<h4><?= $new->title ?></h4>
+					<?= word_limiter($new->body, 20) ?>
 					<p><a style="margin-top:10px;" class="btn btn-primary" href="<?php echo base_url(''); ?>" role="button">Read More &raquo;</a></p>
 				</li>
 			</div>
-		<?php endif;?>
-		<?php endforeach;?>
-	</div>
-	</div>
-	<div class="mt-4" style="background-color:rgba(6,33,66); height:250px; text-align:center">
-		<p style="padding-top:40px;"><a href="" style="color:#FF0; font-weight:500; font-size:19px;">Ph.D. Admissions 2019-20 (Starting from January 2020)</a><img src="<?= base_url('assets/img/new.gif')?>"></p>
-		<p style="padding-top:0px;"><a href="" style="color:white; font-size:18px;">Extention of Tenure of Present Vice Chancellor</a><img src="<?= base_url('assets/img/new.gif')?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="color:white; font-size:18px;">Central University of Punjab got 95th Rank in NIRF in 2019</a><img src="<?= base_url('assets/img/new.gif')?>"></p>
-		<p style="padding-top:20px;"><a href="" style="color:#FF0; font-weight:500; font-size:19px;">International Student Admissions  </a><img src="<?= base_url('assets/img/new.gif')?>"></p>
-	</div>
+		<?php endif; ?>
+	<?php endforeach; ?>
+</div>
+
+<!-- <div class="mt-4" style="background-color:rgba(6,33,66); height:250px; text-align:center">
+		<p style="padding-top:40px;"><a href="" style="color:#FF0; font-weight:500; font-size:19px;">Ph.D. Admissions 2019-20 (Starting from January 2020)</a><img src="<?= base_url('assets/img/new.gif') ?>"></p>
+		<p style="padding-top:0px;"><a href="" style="color:white; font-size:18px;">Extention of Tenure of Present Vice Chancellor</a><img src="<?= base_url('assets/img/new.gif') ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="color:white; font-size:18px;">Central University of Punjab got 95th Rank in NIRF in 2019</a><img src="<?= base_url('assets/img/new.gif') ?>"></p>
+		<p style="padding-top:20px;"><a href="" style="color:#FF0; font-weight:500; font-size:19px;">International Student Admissions  </a><img src="<?= base_url('assets/img/new.gif') ?>"></p>
+	</div> -->
 <div class="container">
-<h1 id="news" class="display-4 WOW bounceIn">Events</h1><hr>
-	<div class="row">
-		<?php foreach($event as $events) : ?>
-			<?php if($events->is_publish == 1) : ?>
-			<div id="news-bar" class="col-sm-6">
-				<li>
-					<h4 class="WOW slideInUp"><?= $events->title?></h4>
-						<?= word_limiter($events->description,20)?>
-						<p style="padding-top:10px;">Venue:- <?= $events->venue?><br>
-						City:- <?= $events->city?><br>
-						Date:- <?= $events->day?>-<?= $events->month?>-<?= $events->year?></p>
-					<p><a style="margin-top:10px;" class="btn btn-primary" href="<?= base_url('events/view/'.$events->id.'')?>" role="button">Read More &raquo;</a></p>
-				</li>
+	<h1 id="impact" class="display-4 WOW bounceIn">Impact Stories </h1>
+	<hr />
+	<div class=row>
+		<div class="container1">
+			<img src=<?= base_url('assets/img/impact1.png') ?> alt="Avatar" class="image">
+			<div class="overlay">
+				<div class="text">
+					<span>One of the most successful campaigns <br />
+						of IIT Kanpur, One Alumnus One Student,<br />
+						was launched to raise funds for 600 <br />
+						undergraduate students, who come from <br />
+						economically weaker sections of the society,<br />
+						to help provide them with IT hardware.
+					</span>
+				</div>
 			</div>
-			<?php endif;?>
-		<?php endforeach;?>
+		</div>
+		<div class="container1">
+			<img src=<?= base_url('assets/img/impact2.png') ?> alt="Avatar" class="image">
+			<div class="overlay">
+				<div class="text">
+					<span>To lend a helping hand to <br />
+						the initiatives of the government<br />
+						a volunteer group from within our<br />
+						campus community consisting of students,<br />
+						staff and faculty was created to help out<br />
+						the underprivileged sections of our society.
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
-<?php $this->load->view('footer'); ?>
+</div>
+<div class="container">
+	<h1 id="news" class="display-4 WOW bounceIn">Events</h1>
+	<hr>
+	<div class="row">
+		<?php foreach ($event as $events) : ?>
+			<?php if ($events->is_publish == 1) : ?>
+				<div id="news-bar" class="col-sm-6">
+					<li>
+						<h4 class="WOW slideInUp"><?= $events->title ?></h4>
+						<?= word_limiter($events->description, 20) ?>
+						<p style="padding-top:10px;">Venue:- <?= $events->venue ?><br>
+							City:- <?= $events->city ?><br>
+							Date:- <?= $events->day ?>-<?= $events->month ?>-<?= $events->year ?></p>
+						<p><a style="margin-top:10px;" class="btn btn-primary" href="<?= base_url('events/view/' . $events->id . '') ?>" role="button">Read More &raquo;</a></p>
+					</li>
+				</div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+	<?php $this->load->view('footer'); ?>

@@ -27,13 +27,13 @@
 			<th>Id</th>
 			<th>Title</th>
 			<th>Description</th>
-			<th>venue</th>
-			<th>state</th>
-			<th>city</th>
-			<th>day</th>
-			<th>month</th>
-			<th>year</th>
-			<th>action</th>
+			<th>Venue</th>
+			<th>State</th>
+			<th>City</th>
+			<th>Day</th>
+			<th>Month</th>
+			<th>Year</th>
+			<th>Action</th>
 		</thead>
 		<tbody>
 			<?php foreach($event as $events) : ?>

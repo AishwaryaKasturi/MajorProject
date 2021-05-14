@@ -46,7 +46,7 @@
 						<a href="<?= base_url('events')?>" class="nav-link">Events</a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('news')?>" class="nav-link">News / Update</a>
+						<a href="<?= base_url('news')?>" class="nav-link">News / Updates</a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('login')?>" class="nav-link">Login</a>
